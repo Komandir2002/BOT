@@ -124,7 +124,7 @@ async def registration(message: types.Message):
             "INSERT INTO users(id,username,fullname) VALUES (%s,%s,%s)",
             (id,username,fullname),
         )
-        psql_db.cursor.commit()
+        psql_db.db.commit()
         await message.reply(f"Registration successfully")
 
 

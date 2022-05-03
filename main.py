@@ -2,12 +2,13 @@ from aiogram.utils import executor
 from handlers import client,callback,extra,callback_vetka_good,\
     callback_vetka_bad,fsmadmin,fsadmin_register, notification,notification_me
 from config import dp,bot
-from database import bot_db
+from database import bot_db,psql_db
 import asyncio
 from decouple import config
 from config import URL
 async def on_startup(_):
     await bot.set_webhook(URL)
+    psql_db.psql_create()
     bot_db.sql_create()
     asyncio.create_task(notification.scheduler())
     asyncio.create_task(notification_me.scheduler())
@@ -46,7 +47,7 @@ if __name__ == "__main__":
 
 
 """
-heroku ps:scale worker=1
+heroku ps:scale worker=0
 heroku ps:scale worker=1
 
 heroku logs --tail --app (Название вашего приложения)
