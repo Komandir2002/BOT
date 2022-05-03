@@ -7,7 +7,7 @@ import asyncio
 from decouple import config
 from config import URI
 async def on_startup(_):
-    await bot.send_webhook(URI)
+    await bot.set_webhook(URI)
     bot_db.sql_create()
     asyncio.create_task(notification.scheduler())
     asyncio.create_task(notification_me.scheduler())
