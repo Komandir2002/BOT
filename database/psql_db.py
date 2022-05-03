@@ -15,9 +15,9 @@ def psql_create():
 
 def psql_film_create():
     try:
-        cursor.execute("CREATE TABLE IF NOT EXISTS film (title TEXT, discription TEXT, osenka TEXT);")
+        cursor.execute("CREATE TABLE IF NOT EXISTS film (photo TEXT, discription TEXT);")
         db.commit()
     except:
         cursor.execute("rollback")
-        cursor.execute("CREATE TABLE IF NOT EXISTS film (title TEXT, discription TEXT, osenka TEXT);")
+        cursor.execute("CREATE TABLE IF NOT EXISTS film (photo TEXT, discription TEXT);")
         db.commit()

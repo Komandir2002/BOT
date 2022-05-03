@@ -123,17 +123,18 @@ async def registration(message: types.Message):
     await message.reply("Registration successful")
 
 
-async def registration_film(message: types.Message):
-    title = message.chat.id
-    discription = message.chat.id
-    osenka = message.chat.id
-
+async def add_film(message: types.Message):
+    photo = FSMADMIN.photo.set()
+    await bot.send_message("Admin, Send me photo please")
+    desc = message.from_user
+    bot.send_message("Admin, Send me description ")
     psql_db.cursor.execute(
-        "INSERT INTO film (title, discription, osenka) VALUES (%s, %s, %s)",
-        (title, discription, osenka),
+        "INSERT INTO film (photo, decription) VALUES (%s, %s)",
+        (photo, desc),
     )
     psql_db.db.commit()
     await message.reply("Registration film successful")
+
 
 async def get_all_users(message: types.Message):
     all_users = psql_db.cursor.execute("SELECT * FROM users")
@@ -146,6 +147,7 @@ async def get_all_users(message: types.Message):
             f"Fullname: {row[2]}"
         )
 
+
 async def get_all_film(message: types.Message):
     all_film = psql_db.cursor.execute("SELECT * FROM film")
     result = psql_db.cursor.fetchall()
@@ -156,7 +158,6 @@ async def get_all_film(message: types.Message):
             f"Discription: {row[1]}\n"
             f"osenka: {row[2]}"
         )
-
 
 def register_handler_admin(dp: Dispatcher):
     dp.register_message_handler(is_admin_command, commands=['admin'])
@@ -177,5 +178,5 @@ def register_handler_admin(dp: Dispatcher):
     dp.register_message_handler(delete_user, commands=['del'])
     dp.register_message_handler(registration, commands=['register'])
     dp.register_message_handler(get_all_users, commands=['get'])
-    dp.register_message_handler(registration_film, commands=['reg_film'])
+    dp.register_message_handler(add_film, commands=['reg_film'])
     dp.register_message_handler(get_all_film, commands=['get_film'])
