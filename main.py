@@ -5,9 +5,9 @@ from config import dp,bot
 from database import bot_db
 import asyncio
 from decouple import config
-from config import URI
+from config import URL
 async def on_startup(_):
-    await bot.set_webhook(URI)
+    await bot.set_webhook(URL)
     bot_db.sql_create()
     asyncio.create_task(notification.scheduler())
     asyncio.create_task(notification_me.scheduler())
@@ -43,3 +43,11 @@ if __name__ == "__main__":
         host='0.0.0.0',
         port=int(config("PORT",default=5000))
     )
+
+
+"""
+heroku ps:scale worker=1
+heroku ps:scale worker=1
+
+heroku logs --tail --app (Название вашего приложения)
+"""
