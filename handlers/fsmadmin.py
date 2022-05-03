@@ -112,6 +112,7 @@ async def delete_user(message: types.Message):
 
 
 
+
 async def registration(message: types.Message):
     id = message.from_user.id
     username = message.from_user.username
@@ -135,6 +136,7 @@ async def get_all_users(message: types.Message):
             f"Username: {row[1]}\n"
             f"Fullname: {row[2]}"
         )
+
 
 
 def register_handler_admin(dp: Dispatcher):
