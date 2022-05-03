@@ -126,11 +126,11 @@ async def registration(message: types.Message):
 async def add_film(message: types.Message):
     photo = FSMADMIN.photo.set()
     await bot.send_message("Admin, Send me photo please")
-    desc = message.from_user
+    discription = message.from_user
     bot.send_message("Admin, Send me description ")
     psql_db.cursor.execute(
-        "INSERT INTO film (photo, decription) VALUES (%s, %s)",
-        (photo, desc),
+        "INSERT INTO film (photo, discription) VALUES (%s, %s)",
+        (photo, discription),
     )
     psql_db.db.commit()
     await message.reply("Registration film successful")
@@ -156,7 +156,6 @@ async def get_all_film(message: types.Message):
         await message.reply(
             f"title: {row[0]}\n"
             f"Discription: {row[1]}\n"
-            f"osenka: {row[2]}"
         )
 
 def register_handler_admin(dp: Dispatcher):
