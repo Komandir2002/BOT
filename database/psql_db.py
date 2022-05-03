@@ -12,13 +12,12 @@ def psql_create():
         cursor.execute("rollback")
         cursor.execute("CREATE TABLE IF NOT EXISTS users (id TEXT, username TEXT, fullname TEXT);")
         db.commit()
-
-
-def psql_film_create():
-    try:
-        cursor.execute("CREATE TABLE IF NOT EXISTS film (title TEXT, discription TEXT,grade TEXT);")
-        db.commit()
-    except:
-        cursor.execute("rollback")
-        cursor.execute("CREATE TABLE IF NOT EXISTS film (title TEXT, discription TEXT,grade TEXT);")
-        db.commit()
+#
+# def psql_film_create():
+#     try:
+#         cursor.execute("CREATE TABLE IF NOT EXISTS film (title TEXT, discription TEXT,grade TEXT);")
+#         db.commit()
+#     except:
+#         cursor.execute("rollback")
+#         cursor.execute("CREATE TABLE IF NOT EXISTS film (title TEXT, discription TEXT,grade TEXT);")
+#         db.commit()

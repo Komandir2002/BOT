@@ -137,8 +137,6 @@ async def get_all_users(message: types.Message):
             f"Fullname: {row[2]}"
         )
 
-
-
 def register_handler_admin(dp: Dispatcher):
     dp.register_message_handler(is_admin_command, commands=['admin'])
     dp.register_message_handler(cancel_command, state='*', commands=['cancel'])
@@ -156,5 +154,5 @@ def register_handler_admin(dp: Dispatcher):
         complete_user_delete,
         lambda call: call.data and call.data.startswith("del "))
     dp.register_message_handler(delete_user, commands=['del'])
-    dp.register_message_handler(registration,commands=['reg'])
+    dp.register_message_handler(registration, commands=['register'])
     dp.register_message_handler(get_all_users, commands=['get'])
