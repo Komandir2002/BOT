@@ -124,11 +124,11 @@ async def registration(message: types.Message):
 
 
 async def registration_film(message: types.Message):
-    title = message.from_user
+    title = message.chat.id
     await bot.send_message("Admin, Send me title please")
-    discription = message.from_user
+    discription = message.chat.id
     await bot.send_message("Admin, Send me discription  for filmease")
-    osenka = message.from_user
+    osenka = message.chat.id
     await bot.send_message("Admin, Send me osenka for filmease please")
 
     psql_db.cursor.execute(
