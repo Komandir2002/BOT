@@ -6,18 +6,9 @@ cursor = db.cursor()
 
 def psql_create():
     try:
-        cursor.execute("CREATE TABLE IF NOT EXISTS users (id TEXT, username TEXT, fullname TEXT);")
+        cursor.execute("CREATE TABLE IF NOT EXISTS user (id TEXT, username TEXT, fullname TEXT);")
         db.commit()
     except:
         cursor.execute("rollback")
-        cursor.execute("CREATE TABLE IF NOT EXISTS users (id TEXT, username TEXT, fullname TEXT);")
+        cursor.execute("CREATE TABLE IF NOT EXISTS user (id TEXT, username TEXT, fullname TEXT);")
         db.commit()
-#
-# def psql_film_create():
-#     try:
-#         cursor.execute("CREATE TABLE IF NOT EXISTS film (title TEXT, discription TEXT,grade TEXT);")
-#         db.commit()
-#     except:
-#         cursor.execute("rollback")
-#         cursor.execute("CREATE TABLE IF NOT EXISTS film (title TEXT, discription TEXT,grade TEXT);")
-#         db.commit()

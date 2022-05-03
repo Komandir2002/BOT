@@ -110,16 +110,13 @@ async def delete_user(message: types.Message):
             )
         )
 
-
-
-
 async def registration(message: types.Message):
     id = message.from_user.id
     username = message.from_user.username
     fullname = message.from_user.full_name
 
     psql_db.cursor.execute(
-        "INSERT INTO users (id, username, fullname) VALUES (%s, %s, %s)",
+        "INSERT INTO user (id, username, fullname) VALUES (%s, %s, %s)",
         (id, username, fullname),
     )
     psql_db.db.commit()
@@ -127,7 +124,7 @@ async def registration(message: types.Message):
 
 
 async def get_all_users(message: types.Message):
-    all_users = psql_db.cursor.execute("SELECT * FROM users")
+    all_users = psql_db.cursor.execute("SELECT * FROM user")
     result = psql_db.cursor.fetchall()
 
     for row in result:
@@ -136,6 +133,8 @@ async def get_all_users(message: types.Message):
             f"Username: {row[1]}\n"
             f"Fullname: {row[2]}"
         )
+
+
 
 def register_handler_admin(dp: Dispatcher):
     dp.register_message_handler(is_admin_command, commands=['admin'])
