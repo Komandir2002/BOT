@@ -124,9 +124,9 @@ async def registration(message: types.Message):
 
 
 async def registration_film(message: types.Message):
-    title = message.text
-    discription = message.text
-    osenka = message.text
+    title = message.chat.id
+    discription = message.chat.id
+    osenka = message.chat.id
 
     psql_db.cursor.execute(
         "INSERT INTO film (title, discription, osenka) VALUES (%s, %s, %s)",
