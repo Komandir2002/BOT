@@ -124,9 +124,9 @@ async def registration(message: types.Message):
 
 
 async def add_film(message: types.Message):
-    title = message.from_user
+    title = message.text
     # await bot.send_message("Admin, Send me photo please")
-    discription = message.from_user
+    discription = message.text
     # bot.send_message("Admin, Send me description ")
     psql_db.cursor.execute(
         "INSERT INTO film (title, discription) VALUES (%s, %s)",
