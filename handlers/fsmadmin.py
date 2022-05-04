@@ -125,9 +125,9 @@ async def registration(message: types.Message):
 
 async def add_film(message: types.Message):
     photo = FSMADMIN.photo.set()
-    await bot.send_message("Admin, Send me photo please")
+    # await bot.send_message("Admin, Send me photo please")
     discription = message.from_user
-    bot.send_message("Admin, Send me description ")
+    # bot.send_message("Admin, Send me description ")
     psql_db.cursor.execute(
         "INSERT INTO film (photo, discription) VALUES (%s, %s)",
         (photo, discription),
